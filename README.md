@@ -1,4 +1,4 @@
-# Forsa (فرصة) — Wijhti
+# Forsa (فرصة) 
 
 **Forsa (فرصة)** is a native Android application (**Java + XML**) designed for Tunisian students finishing their **Licence (BAC+3)**.  
 Built on top of the *EmployeeManager* academic architecture, it combines a complete **University Career & Guidance Office Advisor Manager** (full CRUD) with **Wijhti**, an evidence-based orientation assistant across four post-Licence pathways.
