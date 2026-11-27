@@ -94,4 +94,93 @@
     <string name="cd_add_employee">Ajouter un conseiller</string>
     <string name="cd_edit_employee">Modifier</string>
     <string name="cd_delete_employee">Supprimer</string>
+
+    <!-- Student Passport (Phase 3) -->
+    <string name="passport_title">Passeport Étudiant</string>
+    <string name="passport_subtitle">Profil académique &amp; compétences (BAC+3)</string>
+    <string name="passport_msd_label">Moyenne Spécifique du Dossier (MSD)</string>
+    <string name="passport_msd_formula">Formule officielle : (0.5 × Bac + L1 + L2) / 2.5</string>
+    <string name="passport_msd_missing">À calculer (renseigner Bac, L1 et L2)</string>
+    <string name="passport_msd_value_format">%.2f / 20</string>
+    <string name="passport_section_identity">Parcours universitaire</string>
+    <string name="passport_label_name">Nom et prénom</string>
+    <string name="passport_hint_name">Ex : Firas Ben Salah</string>
+    <string name="passport_label_institution">Établissement</string>
+    <string name="passport_hint_institution">Ex : ISET Sfax</string>
+    <string name="passport_label_specialization">Spécialité / Filière</string>
+    <string name="passport_hint_specialization">Ex : MDW</string>
+    <string name="passport_label_exact_degree">Intitulé exact du diplôme</string>
+    <string name="passport_hint_exact_degree">Ex : Technologies de l\'Informatique (option MDW)</string>
+    <string name="passport_section_grades">Notes &amp; conditions administratives</string>
+    <string name="passport_label_bac">Moyenne Bac (/20)</string>
+    <string name="passport_label_l1">Moyenne L1 (/20)</string>
+    <string name="passport_label_l2">Moyenne L2 (/20)</string>
+    <string name="passport_label_l3">Moyenne L3 (optionnelle)</string>
+    <string name="passport_hint_grade">Ex : 13.50</string>
+    <string name="passport_hint_grade_opt">Optionnel</string>
+    <string name="passport_label_age">Âge au 01/09/2027</string>
+    <string name="passport_hint_age">Ex : 22</string>
+    <string name="passport_label_repeats">Années redoublées</string>
+    <string name="passport_cb_interruption">J\'ai eu une interruption d\'études</string>
+    <string name="passport_section_skills">Compétences &amp; projets</string>
+    <string name="passport_hint_custom_skill">Ajouter une compétence (ex : Docker)…</string>
+    <string name="passport_btn_add_skill">+ Ajouter</string>
+    <string name="passport_cb_deployed_project">J\'ai au moins un projet déployé (GitHub / prod)</string>
+    <string name="passport_cb_pfe">PFE validé ou stage PFE en cours</string>
+    <string name="passport_section_preferences">Préférences d\'orientation</string>
+    <string name="passport_label_destination">Destination préférée</string>
+    <string name="passport_label_language">Langue d\'études souhaitée</string>
+    <string name="passport_cb_funding">J\'ai besoin d\'une bourse / financement</string>
+    <string name="passport_btn_save">Enregistrer mon Passeport</string>
+    <string name="passport_err_name">Veuillez saisir votre nom.</string>
+    <string name="passport_err_institution">Veuillez saisir votre établissement.</string>
+    <string name="passport_err_spec">Veuillez saisir votre spécialité.</string>
+    <string name="passport_err_grade_range">La note doit être comprise entre 0 et 20.</string>
+    <string name="passport_err_age_range">L\'âge doit être compris entre 16 et 45 ans.</string>
+    <string name="passport_err_repeats_range">Nombre de redoublements invalide (0 à 5).</string>
+    <string name="passport_msg_saved">Passeport mis à jour ! Ton profil est prêt pour l\'évaluation.</string>
+
+    <!-- Opportunities & Details (Phase 5) -->
+    <string name="opportunities_title">Opportunités post-Licence</string>
+    <string name="opportunities_subtitle">Analyse basée sur les critères publiés</string>
+    <string name="opp_filter_only_eligible">Afficher uniquement les éligibles</string>
+    <string name="opp_empty">Aucune opportunité correspondante. Essaie d\'élargir le filtre ou de compléter ton Passeport.</string>
+    <string name="opp_count_format">%d opportunité(s) affichée(s)</string>
+    <string name="opp_compatibility_label">Compatibilité avec les critères publiés : %d %% — ce n\'est PAS une probabilité d\'admission.</string>
+
+    <string name="status_eligible">Éligible</string>
+    <string name="status_potential">Potentiellement éligible</string>
+    <string name="status_not_eligible">Non éligible</string>
+    <string name="status_insufficient">Infos insuffisantes</string>
+
+    <string name="deadline_closed">Clôturé</string>
+    <string name="deadline_urgent_format">Urgent • J-%1$d (%2$s)</string>
+    <string name="deadline_open_format">J-%1$d (%2$s)</string>
+    <string name="deadline_continuous">Ouvert (continu)</string>
+
+    <string name="opp_details_title">Détails de l\'opportunité</string>
+    <string name="opp_section_formal">Éligibilité formelle (critères publiés)</string>
+    <string name="opp_section_personal_fit">Adéquation personnelle (séparée des critères)</string>
+    <string name="opp_section_info">Informations pratiques &amp; source</string>
+    <string name="opp_label_deadline">Date limite :</string>
+    <string name="opp_label_funding">Financement :</string>
+    <string name="opp_label_source">Source officielle :</string>
+    <string name="opp_label_verified">Dernière vérification :</string>
+    <string name="opp_label_notes">Notes &amp; points à vérifier :</string>
+    <string name="opp_section_documents">Checklist des documents</string>
+    <string name="opp_docs_counter_format">%1$d/%2$d prêts</string>
+    <string name="opp_docs_hint">Appuie sur un document pour changer son statut (Disponible / Manquant / Après présélection).</string>
+    <string name="opp_btn_talk_advisor">Parler à un conseiller</string>
+    <string name="opp_not_found">Opportunité introuvable.</string>
+    <string name="opp_no_advisor">Aucun conseiller disponible pour ce département.</string>
+    <string name="opp_source_open_error">Impossible d\'ouvrir le lien dans le navigateur.</string>
+
+    <!-- Action Plan (Phase 6) -->
+    <string name="action_plan_title">Tes 90 prochains jours</string>
+    <string name="action_plan_subtitle">Plan d\'action prioritaire généré depuis ton Passeport</string>
+    <string name="plan_progress_format">%1$d/%2$d actions terminées</string>
+    <string name="plan_priority_1">Priorité 1 • Urgent</string>
+    <string name="plan_priority_2">Priorité 2 • Important</string>
+    <string name="plan_priority_3">Priorité 3 • Recommandé</string>
+    <string name="plan_empty">Aucune action à afficher pour le moment.</string>
 </resources>

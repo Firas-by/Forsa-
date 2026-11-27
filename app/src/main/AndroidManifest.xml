@@ -35,6 +35,23 @@
             android:name=".ui.EmployeeDetailsActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".ui.PassportActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".ui.OpportunitiesActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.OpportunityDetailsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.ActionPlanActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

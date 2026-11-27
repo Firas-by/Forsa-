@@ -1,34 +1,32 @@
-# Forsa (فرصة) — Wijhti
+# Forsa (فرصة)
 
-**Forsa (فرصة)** is a native Android application (**Java + XML**) designed for Tunisian students finishing their **Licence (BAC+3)**.  
-Built on top of the *EmployeeManager* academic architecture, it combines a complete **University Career & Guidance Office Advisor Manager** (full CRUD) with **Wijhti**, an evidence-based orientation assistant across four post-Licence pathways.
-
-> **Current Progress:** Phases 1 & 2 implemented and verified (`assembleDebug` passing). Phases 3–6 are scheduled next.
+**Forsa (فرصة)** is a complete native Android application (**Java + XML**) designed for Tunisian students finishing their **Licence (BAC+3)**.  
+Built strictly on top of the *EmployeeManager* academic architecture, it combines a full CRUD **University Career & Guidance Office Advisor Manager** with **Wijhti**, an evidence-based orientation assistant that checks published eligibility rules across four post-Licence pathways.
 
 ---
 
-## Tech Stack & Constraints
+## Key Constraints & Architecture
 
-- **Language & UI:** Java 11 + XML layouts only (no Kotlin, no Jetpack Compose)
-- **Views & Binding:** `findViewById()` only (no ViewBinding / DataBinding / Hilt)
-- **Lists & Grids:** `ListView` + `GridView` with `BaseAdapter` and `static class ViewHolder` (no `RecyclerView`, no `Navigation` component, no `Fragment`s)
-- **Storage:** Static in-memory `ArrayList` collections in [`DataStore.java`](app/src/main/java/tn/forsa/app/data/DataStore.java) (no Room / SQLite / Firebase / Retrofit)
+- **Language & UI:** Pure **Java 11 + XML** (no Kotlin, no Jetpack Compose)
+- **View Lookup:** `findViewById()` only (no ViewBinding, DataBinding, or Hilt)
+- **Lists & Grids:** `ListView` + `GridView` with `BaseAdapter` and `static class ViewHolder` (no `RecyclerView`, no `Fragment`s, no Navigation component)
+- **Persistence:** Static in-memory `ArrayList` collections in [`DataStore.java`](app/src/main/java/tn/forsa/app/data/DataStore.java) (no Room / SQLite / Firebase / Retrofit)
 - **SDK:** `minSdk 24`, `targetSdk 35`, `compileSdk 35`
-- **Dependencies:** `androidx.appcompat:appcompat:1.7.0`, `com.google.android.material:material:1.12.0`
+- **Dependencies:** `androidx.appcompat:appcompat:1.7.0` and `com.google.android.material:material:1.12.0` only
 - **UI Language:** French with friendly Tunisian touches (*"Marhbe bik fi Forsa !"*)
 
 ---
 
-## Design & Honesty Principles
+## Design & Transparency Commitments
 
 - **Tunisian-inspired palette** ([`colors.xml`](app/src/main/res/values/colors.xml)):
   - Sidi Bou Said Blue (`#1E5AA8`) — Primary
-  - Tunisian Red (`#D32F2F`) — Accent / Delete
+  - Tunisian Red (`#D32F2F`) — Accent / Delete / Closed
   - Warm Cream (`#FFF8F0`) — Background
-  - Jasmine Green (`#2E9E6B`) — Eligible / Open
-  - Orange (`#F29D38`) — Potential
-  - Cool Grey (`#9AA5B1`) — Insufficient info
-- **Transparency commitments** (displayed on the home dashboard):
+  - Jasmine Green (`#2E9E6B`) — Eligible / Available
+  - Orange (`#F29D38`) — Potentially Eligible / Warning
+  - Cool Grey (`#9AA5B1`) — Insufficient Info
+- **Honesty rules** (shown on `MainActivity`):
   1. Aucune recommandation sans source officielle vérifiable.
   2. Aucune équivalence non vérifiée présentée comme un fait.
   3. Aucune opportunité expirée affichée comme ouverte.
@@ -36,51 +34,61 @@ Built on top of the *EmployeeManager* academic architecture, it combines a compl
 
 ---
 
-## Implemented Screens (Phases 1 & 2)
+## Screens Overview (9 Activities)
 
-| Screen | Activity | Layout | Purpose |
+| Screen | Activity | Layout | Description |
 | :--- | :--- | :--- | :--- |
-| **Accueil (Dashboard)** | [`MainActivity.java`](app/src/main/java/tn/forsa/app/ui/MainActivity.java) | [`activity_main.xml`](app/src/main/res/layout/activity_main.xml) | Welcome banner, live counters (advisors, departments, open opportunities), 2×2 `GridView` for the 4 pathways, quick shortcuts, honesty rules card |
-| **Conseillers (Liste)** | [`EmployeesActivity.java`](app/src/main/java/tn/forsa/app/ui/EmployeesActivity.java) | [`activity_employees.xml`](app/src/main/res/layout/activity_employees.xml) | `ListView` of 6+ guidance advisors, live `TextWatcher` search, department filter chips, `+` FAB, edit/delete per row with `AlertDialog.Builder` |
-| **Ajouter un conseiller** | [`AddEmployeeActivity.java`](app/src/main/java/tn/forsa/app/ui/AddEmployeeActivity.java) | [`activity_add_employee.xml`](app/src/main/res/layout/activity_add_employee.xml) | Validated creation form with department `Spinner` and `DatePickerDialog` |
-| **Modifier un conseiller** | [`EditEmployeeActivity.java`](app/src/main/java/tn/forsa/app/ui/EditEmployeeActivity.java) | [`activity_edit_employee.xml`](app/src/main/res/layout/activity_edit_employee.xml) | Pre-filled form via `Intent` extras, returning `RESULT_OK` via `setResult()` / `ActivityResultLauncher` |
-| **Fiche du conseiller** | [`EmployeeDetailsActivity.java`](app/src/main/java/tn/forsa/app/ui/EmployeeDetailsActivity.java) | [`activity_details.xml`](app/src/main/res/layout/activity_details.xml) | Full advisor card with circular initials avatar, contact details, *Modifier* and *Supprimer* (`AlertDialog`) buttons |
+| **Accueil** | [`MainActivity.java`](app/src/main/java/tn/forsa/app/ui/MainActivity.java) | [`activity_main.xml`](app/src/main/res/layout/activity_main.xml) | *"Marhbe bik"* banner, live counters (advisors, departments, open opportunities), 2×2 `GridView` for the 4 pathways, shortcuts, honesty rules card |
+| **Passeport Étudiant** | [`PassportActivity.java`](app/src/main/java/tn/forsa/app/ui/PassportActivity.java) | [`activity_passport.xml`](app/src/main/res/layout/activity_passport.xml) | Student profile form, live MSD preview `(0.5*Bac + L1 + L2) / 2.5`, 0–20 grade validation, destination/language `Spinner`s, skill toggle/add chips |
+| **Opportunités** | [`OpportunitiesActivity.java`](app/src/main/java/tn/forsa/app/ui/OpportunitiesActivity.java) | [`activity_opportunities.xml`](app/src/main/res/layout/activity_opportunities.xml) | Evaluated `ListView` with category filter chips, *"Afficher uniquement les éligibles"* `CheckBox`, colored status & `Clôturé`/`Urgent` badges |
+| **Détails Opportunité** | [`OpportunityDetailsActivity.java`](app/src/main/java/tn/forsa/app/ui/OpportunityDetailsActivity.java) | [`activity_opportunity_details.xml`](app/src/main/res/layout/activity_opportunity_details.xml) | Formal eligibility reasons, separate personal fit card, deadline countdown, funding & clickable source URL, interactive `X/Y` document checklist, *"Parler à un conseiller"* button |
+| **Tes 90 prochains jours** | [`ActionPlanActivity.java`](app/src/main/java/tn/forsa/app/ui/ActionPlanActivity.java) | [`activity_action_plan.xml`](app/src/main/res/layout/activity_action_plan.xml) | 3–5 prioritized actions generated by [`ActionPlanBuilder.java`](app/src/main/java/tn/forsa/app/engine/ActionPlanBuilder.java) with completion checkboxes and deep links |
+| **Conseillers (CRUD)** | [`EmployeesActivity.java`](app/src/main/java/tn/forsa/app/ui/EmployeesActivity.java) | [`activity_employees.xml`](app/src/main/res/layout/activity_employees.xml) | `ListView` of guidance advisors with `TextWatcher` search, department filter chips, `+` FAB, edit/delete icons, `AlertDialog.Builder` confirmation |
+| **Ajouter Conseiller** | [`AddEmployeeActivity.java`](app/src/main/java/tn/forsa/app/ui/AddEmployeeActivity.java) | [`activity_add_employee.xml`](app/src/main/res/layout/activity_add_employee.xml) | Validated advisor creation form with department `Spinner` and `DatePickerDialog` |
+| **Modifier Conseiller** | [`EditEmployeeActivity.java`](app/src/main/java/tn/forsa/app/ui/EditEmployeeActivity.java) | [`activity_edit_employee.xml`](app/src/main/res/layout/activity_edit_employee.xml) | Pre-filled via `Intent` extras, returns `RESULT_OK` via `setResult()` / `ActivityResultLauncher` |
+| **Fiche Conseiller** | [`EmployeeDetailsActivity.java`](app/src/main/java/tn/forsa/app/ui/EmployeeDetailsActivity.java) | [`activity_details.xml`](app/src/main/res/layout/activity_details.xml) | Full advisor card with initials avatar, contact info, *Modifier* and *Supprimer* (`AlertDialog`) |
 
 ---
 
-## Assignment Requirements Mapping
+## Requirements-to-Files Mapping
 
-| Requirement | Implementation |
-| :--- | :--- |
-| `Employee.java` (`Serializable`, private fields, getters/setters) | [`Employee.java`](app/src/main/java/tn/forsa/app/model/Employee.java) |
-| `EmployeeAdapter.java` (`BaseAdapter`, `ViewHolder`, `convertView == null`) | [`EmployeeAdapter.java`](app/src/main/java/tn/forsa/app/adapter/EmployeeAdapter.java) + [`item_employee.xml`](app/src/main/res/layout/item_employee.xml) |
-| In-memory static `DataStore` with 6 advisors & 4 departments | [`DataStore.java`](app/src/main/java/tn/forsa/app/data/DataStore.java) |
-| `EmployeesActivity` (search, filters, FAB, `notifyDataSetChanged()`, `AlertDialog`) | [`EmployeesActivity.java`](app/src/main/java/tn/forsa/app/ui/EmployeesActivity.java) |
-| `AddEmployeeActivity` & `EditEmployeeActivity` (`Spinner`, `DatePickerDialog`, `Intent` extras) | [`AddEmployeeActivity.java`](app/src/main/java/tn/forsa/app/ui/AddEmployeeActivity.java), [`EditEmployeeActivity.java`](app/src/main/java/tn/forsa/app/ui/EditEmployeeActivity.java) |
-| `EmployeeDetailsActivity` (full profile + edit/delete) | [`EmployeeDetailsActivity.java`](app/src/main/java/tn/forsa/app/ui/EmployeeDetailsActivity.java) |
-| `MainActivity` (counters + 4-pathway `GridView` + shortcuts) | [`MainActivity.java`](app/src/main/java/tn/forsa/app/ui/MainActivity.java), [`PathwayAdapter.java`](app/src/main/java/tn/forsa/app/adapter/PathwayAdapter.java), [`NonScrollGridView.java`](app/src/main/java/tn/forsa/app/util/NonScrollGridView.java) |
-| Simple `LinearLayout` bottom navigation (no Navigation component) | [`view_bottom_nav.xml`](app/src/main/res/layout/view_bottom_nav.xml) + [`BottomNavHelper.java`](app/src/main/java/tn/forsa/app/util/BottomNavHelper.java) |
+### Core *EmployeeManager* Requirements
+- **`Employee.java`** (`Serializable`, private fields + getters/setters): [`Employee.java`](app/src/main/java/tn/forsa/app/model/Employee.java)
+- **`EmployeeAdapter.java`** (`BaseAdapter`, `convertView == null`, `static class ViewHolder`): [`EmployeeAdapter.java`](app/src/main/java/tn/forsa/app/adapter/EmployeeAdapter.java) + [`item_employee.xml`](app/src/main/res/layout/item_employee.xml)
+- **`EmployeesActivity.java`** (`ListView`, `TextWatcher`, chips, FAB, `notifyDataSetChanged()`, `AlertDialog`): [`EmployeesActivity.java`](app/src/main/java/tn/forsa/app/ui/EmployeesActivity.java)
+- **`AddEmployeeActivity.java`** (`Spinner`, `DatePickerDialog`, validation): [`AddEmployeeActivity.java`](app/src/main/java/tn/forsa/app/ui/AddEmployeeActivity.java)
+- **`EditEmployeeActivity.java`** (pre-filled `Intent` extras + `setResult()` / `ActivityResultLauncher`): [`EditEmployeeActivity.java`](app/src/main/java/tn/forsa/app/ui/EditEmployeeActivity.java)
+- **`EmployeeDetailsActivity.java`** (full details + edit/delete with `AlertDialog`): [`EmployeeDetailsActivity.java`](app/src/main/java/tn/forsa/app/ui/EmployeeDetailsActivity.java)
+- **`DataStore.java`** (static in-memory `ArrayList`s, 6 advisors, 4 departments): [`DataStore.java`](app/src/main/java/tn/forsa/app/data/DataStore.java)
 
----
-
-## Roadmap (Upcoming Phases)
-
-- **Phase 3:** `Student.java` (with official `getMsd()` formula `(0.5 * bac + l1 + l2) / 2.5`) and `PassportActivity.java` (grades `0–20` validation, degree & skills chips).
-- **Phase 4:** `Opportunity.java`, `EligibilityResult.java`, `EligibilityEngine.java`, and seeded official opportunities.
-- **Phase 5:** `OpportunitiesActivity.java`, `OpportunityAdapter.java`, `OpportunityDetailsActivity.java` (document checklist `X/Y` + *"Parler à un conseiller"* handoff).
-- **Phase 6:** `ActionPlanActivity.java` & `ActionPlanBuilder.java` (*"Tes 90 prochains jours"*), empty-state polish, and final documentation.
-
-### Official Sources to Verify (for Phase 4 Seed Data)
-- **Bourse du gouvernement tunisien (Circulaire 50/26):** `best.rnu.tn`
-- **Mastères professionnels ISET Sfax & ISET Sousse:** Official ISET admission portals
-- **Erasmus Mundus:** European Education and Culture Executive Agency (EACEA) catalog
-- **CIVP:** ANETI (`emploi.nat.tn`)
+### *Wijhti* Decision-Support Requirements
+- **Student Passport & MSD formula `(0.5*Bac + L1 + L2) / 2.5`:** [`Student.java`](app/src/main/java/tn/forsa/app/model/Student.java), [`PassportActivity.java`](app/src/main/java/tn/forsa/app/ui/PassportActivity.java)
+- **Opportunity & Document Checklist Models:** [`Opportunity.java`](app/src/main/java/tn/forsa/app/model/Opportunity.java), [`DocumentItem.java`](app/src/main/java/tn/forsa/app/model/DocumentItem.java), [`EligibilityResult.java`](app/src/main/java/tn/forsa/app/model/EligibilityResult.java)
+- **Eligibility & Deadline Engine (formal vs. personal fit):** [`EligibilityEngine.java`](app/src/main/java/tn/forsa/app/engine/EligibilityEngine.java), [`EligibilityUiHelper.java`](app/src/main/java/tn/forsa/app/util/EligibilityUiHelper.java)
+- **Opportunities List & Details + Advisor Handoff:** [`OpportunitiesActivity.java`](app/src/main/java/tn/forsa/app/ui/OpportunitiesActivity.java), [`OpportunityAdapter.java`](app/src/main/java/tn/forsa/app/adapter/OpportunityAdapter.java), [`OpportunityDetailsActivity.java`](app/src/main/java/tn/forsa/app/ui/OpportunityDetailsActivity.java), [`DocumentCheckAdapter.java`](app/src/main/java/tn/forsa/app/adapter/DocumentCheckAdapter.java)
+- **90-Day Action Plan:** [`ActionItem.java`](app/src/main/java/tn/forsa/app/model/ActionItem.java), [`ActionPlanBuilder.java`](app/src/main/java/tn/forsa/app/engine/ActionPlanBuilder.java), [`ActionPlanAdapter.java`](app/src/main/java/tn/forsa/app/adapter/ActionPlanAdapter.java), [`ActionPlanActivity.java`](app/src/main/java/tn/forsa/app/ui/ActionPlanActivity.java)
+- **Simple `LinearLayout` Bottom Navigation:** [`view_bottom_nav.xml`](app/src/main/res/layout/view_bottom_nav.xml) + [`BottomNavHelper.java`](app/src/main/java/tn/forsa/app/util/BottomNavHelper.java)
 
 ---
 
-## Running the Project
+## Official Data Sources to Re-Verify
 
-1. Clone the repository and open the folder in **Android Studio**.
-2. Let Gradle sync (`compileSdk 35`, Java 11).
-   > **Windows note:** If the folder path contains non-ASCII characters (such as `فرصة`), [`gradle.properties`](gradle.properties) already includes `android.overridePathCheck=true` so builds succeed normally in Android Studio.
-3. Select an emulator (e.g., `Pixel_7`, API 24+) or physical device and click **Run**.
+All seeded opportunities carry `lastVerified = 2026-11-27` and `"TODO verify"` notes wherever details must be re-checked prior to submission:
+
+1. **Bourse du gouvernement tunisien 2027–2028 (Circulaire 50/26):** `https://www.best.rnu.tn` (verify exact physical file & online registration dates and required documents with your scolarité).
+2. **ISET Sfax — Mastère pro Administration des Systèmes, Sécurité et Cloud Computing:** `https://isetsf.rnu.tn` (verify 2027–2028 opening dates and accepted degree titles).
+3. **ISET Sfax — Mastère pro Développement des Systèmes Informatiques et Réseaux:** `https://isetsf.rnu.tn` (verify 2027–2028 campaign dates and 3-choice rule).
+4. **ISET Sousse — Mastère pro Cloud Computing et Développement des Applications Distribuées:** `https://isetso.rnu.tn` (2026-08-09 session closed; verify 2027–2028 reopening).
+5. **Erasmus Mundus Joint Masters (EMJM):** `https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en` (verify consortium-specific language scores, deadlines, and scholarship rules).
+6. **CIVP (ANETI):** `https://www.emploi.nat.tn` (verify current allowance amounts and eligibility rules; explicitly marked as NOT a permanent CDI).
+7. **Junior Full-Stack Developer:** `https://www.emploi.nat.tn` (plus active tech job boards for current openings).
+8. **Freelance / Auto-Entrepreneur (Tunisia):** `https://www.autoentrepreneur.tn` (verify current registration and tax obligations).
+
+---
+
+## Build & Run in Android Studio
+
+1. Open the project folder in **Android Studio**.
+2. Wait for Gradle Sync (`compileSdk 35`, Java 11).
+   > **Windows note:** [`gradle.properties`](gradle.properties) includes `android.overridePathCheck=true` so paths with Arabic characters (e.g. `Forsa (فرصة)`) build cleanly.
+3. Select an emulator (e.g., `Pixel_7`, API 24+) or physical Android device and click **Run** (`Shift+F10`).
