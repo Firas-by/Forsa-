@@ -9,6 +9,21 @@
         <item name="colorError">@color/color_accent_red</item>
         <item name="android:windowBackground">@color/color_background</item>
         <item name="android:statusBarColor">@color/color_primary_dark</item>
+        <item name="android:navigationBarColor">@color/color_surface</item>
+        <item name="materialButtonStyle">@style/ForsaPrimaryButton</item>
+        <item name="materialButtonOutlinedStyle">@style/ForsaOutlinedButton</item>
+    </style>
+
+    <style name="ForsaPrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">14dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <style name="ForsaOutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">14dp</item>
+        <item name="strokeColor">@color/color_primary_border</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="ForsaSectionLabel">

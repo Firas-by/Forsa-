@@ -16,6 +16,7 @@ import tn.forsa.app.adapter.ActionPlanAdapter;
 import tn.forsa.app.data.DataStore;
 import tn.forsa.app.engine.ActionPlanBuilder;
 import tn.forsa.app.model.ActionItem;
+import tn.forsa.app.util.AnimationHelper;
 import tn.forsa.app.util.BottomNavHelper;
 
 /**
@@ -112,15 +113,15 @@ public class ActionPlanActivity extends AppCompatActivity {
     private void navigateFromAction(ActionItem item) {
         String type = item.getTargetType();
         if (ActionItem.TARGET_PASSPORT.equals(type)) {
-            startActivity(new Intent(this, PassportActivity.class));
+            AnimationHelper.startActivityAnimated(this, new Intent(this, PassportActivity.class));
         } else if (ActionItem.TARGET_OPPORTUNITY.equals(type) && item.getRelatedOpportunityId() != -1) {
             Intent intent = new Intent(this, OpportunityDetailsActivity.class);
             intent.putExtra(OpportunitiesActivity.EXTRA_OPPORTUNITY_ID, item.getRelatedOpportunityId());
-            startActivity(intent);
+            AnimationHelper.startActivityAnimated(this, intent);
         } else if (ActionItem.TARGET_ADVISOR.equals(type)) {
-            startActivity(new Intent(this, EmployeesActivity.class));
+            AnimationHelper.startActivityAnimated(this, new Intent(this, EmployeesActivity.class));
         } else {
-            startActivity(new Intent(this, OpportunitiesActivity.class));
+            AnimationHelper.startActivityAnimated(this, new Intent(this, OpportunitiesActivity.class));
         }
     }
 }

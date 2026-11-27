@@ -20,6 +20,7 @@ import tn.forsa.app.data.DataStore;
 import tn.forsa.app.engine.EligibilityEngine;
 import tn.forsa.app.model.EligibilityResult;
 import tn.forsa.app.model.Opportunity;
+import tn.forsa.app.util.AnimationHelper;
 import tn.forsa.app.util.BottomNavHelper;
 
 /**
@@ -93,10 +94,11 @@ public class OpportunitiesActivity extends AppCompatActivity {
         lvOpportunities.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AnimationHelper.pulseTap(view);
                 Opportunity selected = filteredOpportunities.get(position);
                 Intent intent = new Intent(OpportunitiesActivity.this, OpportunityDetailsActivity.class);
                 intent.putExtra(EXTRA_OPPORTUNITY_ID, selected.getId());
-                startActivity(intent);
+                AnimationHelper.startActivityAnimated(OpportunitiesActivity.this, intent);
             }
         });
     }

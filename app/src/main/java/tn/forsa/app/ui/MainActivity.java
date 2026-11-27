@@ -17,6 +17,7 @@ import tn.forsa.app.R;
 import tn.forsa.app.adapter.PathwayAdapter;
 import tn.forsa.app.data.DataStore;
 import tn.forsa.app.model.PathwayItem;
+import tn.forsa.app.util.AnimationHelper;
 import tn.forsa.app.util.BottomNavHelper;
 
 /**
@@ -51,13 +52,21 @@ public class MainActivity extends AppCompatActivity {
         setupPathwaysGrid();
         setupShortcuts();
         BottomNavHelper.setup(this, BottomNavHelper.TAB_HOME);
-        refreshCounters();
+        runEntranceAnimations();
+        refreshCounters(true);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        refreshCounters();
+        refreshCounters(false);
+    }
+
+    private void runEntranceAnimations() {
+        View hero = findViewById(R.id.cardHeroBanner);
+        View stats = findViewById(R.id.layoutStatsRow);
+        View honesty = findViewById(R.id.cardHonestyRules);
+        AnimationHelper.staggerFadeSlideUp(hero, stats, honesty);
     }
 
     private void bindViews() {
@@ -71,10 +80,20 @@ public class MainActivity extends AppCompatActivity {
         btnShortcutPlan = findViewById(R.id.btnShortcutPlan);
     }
 
-    private void refreshCounters() {
-        tvCountEmployees.setText(String.valueOf(DataStore.employees.size()));
-        tvCountDepartments.setText(String.valueOf(DataStore.DEPARTMENTS.length));
-        tvCountOpenOpportunities.setText(String.valueOf(DataStore.getOpenOpportunitiesCount()));
+    private void refreshCounters(boolean animate) {
+        int empCount = DataStore.employees.size();
+        int deptCount = DataStore.DEPARTMENTS.length;
+        int oppCount = DataStore.getOpenOpportunitiesCount();
+
+        if (animate) {
+            AnimationHelper.animateCount(tvCountEmployees, empCount);
+            AnimationHelper.animateCount(tvCountDepartments, deptCount);
+            AnimationHelper.animateCount(tvCountOpenOpportunities, oppCount);
+        } else {
+            tvCountEmployees.setText(String.valueOf(empCount));
+            tvCountDepartments.setText(String.valueOf(deptCount));
+            tvCountOpenOpportunities.setText(String.valueOf(oppCount));
+        }
     }
 
     private void setupPathwaysGrid() {
@@ -110,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
         gvPathways.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AnimationHelper.pulseTap(view);
                 PathwayItem selected = pathways.get(position);
                 openActivityWithOptionalCategory("tn.forsa.app.ui.OpportunitiesActivity", selected.getCategoryKey());
             }
@@ -120,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener openPassport = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AnimationHelper.pulseTap(v);
                 openActivityWithOptionalCategory("tn.forsa.app.ui.PassportActivity", null);
             }
         };
@@ -130,14 +151,16 @@ public class MainActivity extends AppCompatActivity {
         btnShortcutAdvisors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AnimationHelper.pulseTap(v);
                 Intent intent = new Intent(MainActivity.this, EmployeesActivity.class);
-                startActivity(intent);
+                AnimationHelper.startActivityAnimated(MainActivity.this, intent);
             }
         });
 
         btnShortcutPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AnimationHelper.pulseTap(v);
                 openActivityWithOptionalCategory("tn.forsa.app.ui.ActionPlanActivity", null);
             }
         });
@@ -153,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             if (categoryKey != null) {
                 intent.putExtra(EXTRA_CATEGORY_FILTER, categoryKey);
             }
-            startActivity(intent);
+            AnimationHelper.startActivityAnimated(MainActivity.this, intent);
         } catch (ClassNotFoundException e) {
             Toast.makeText(MainActivity.this, R.string.nav_coming_soon, Toast.LENGTH_SHORT).show();
         }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_card_rounded"
@@ -74,7 +75,7 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/cd_edit_employee"
         android:src="@android:drawable/ic_menu_edit"
-        android:tint="@color/color_primary" />
+        app:tint="@color/color_primary" />
 
     <ImageButton
         android:id="@+id/btnRowDelete"
@@ -83,6 +84,6 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/cd_delete_employee"
         android:src="@android:drawable/ic_menu_delete"
-        android:tint="@color/color_accent_red" />
+        app:tint="@color/color_accent_red" />
 
 </LinearLayout>

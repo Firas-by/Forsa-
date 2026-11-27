@@ -22,6 +22,7 @@ import androidx.core.content.ContextCompat;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import tn.forsa.app.R;
 import tn.forsa.app.adapter.EmployeeAdapter;
@@ -142,7 +143,7 @@ public class EmployeesActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                currentSearchQuery = s != null ? s.toString().trim().toLowerCase() : "";
+                currentSearchQuery = s != null ? s.toString().trim().toLowerCase(Locale.ROOT) : "";
                 applyFilters();
             }
 
@@ -216,10 +217,10 @@ public class EmployeesActivity extends AppCompatActivity {
             // Check search text filter
             boolean matchesSearch = true;
             if (!currentSearchQuery.isEmpty()) {
-                String fullName = emp.getNomComplet().toLowerCase();
-                String role = emp.getPoste() != null ? emp.getPoste().toLowerCase() : "";
-                String email = emp.getEmail() != null ? emp.getEmail().toLowerCase() : "";
-                String dept = emp.getDepartement() != null ? emp.getDepartement().toLowerCase() : "";
+                String fullName = emp.getNomComplet().toLowerCase(Locale.ROOT);
+                String role = emp.getPoste() != null ? emp.getPoste().toLowerCase(Locale.ROOT) : "";
+                String email = emp.getEmail() != null ? emp.getEmail().toLowerCase(Locale.ROOT) : "";
+                String dept = emp.getDepartement() != null ? emp.getDepartement().toLowerCase(Locale.ROOT) : "";
 
                 matchesSearch = fullName.contains(currentSearchQuery)
                         || role.contains(currentSearchQuery)

@@ -57,6 +57,7 @@ public class BottomNavHelper {
             @Override
             public void onClick(View v) {
                 if (activeTab != TAB_HOME) {
+                    AnimationHelper.pulseTap(v);
                     openActivityIfPresent(activity, "tn.forsa.app.ui.MainActivity");
                 }
             }
@@ -66,6 +67,7 @@ public class BottomNavHelper {
             @Override
             public void onClick(View v) {
                 if (activeTab != TAB_OPPORTUNITIES) {
+                    AnimationHelper.pulseTap(v);
                     openActivityIfPresent(activity, "tn.forsa.app.ui.OpportunitiesActivity");
                 }
             }
@@ -75,9 +77,10 @@ public class BottomNavHelper {
             @Override
             public void onClick(View v) {
                 if (activeTab != TAB_ADVISORS) {
+                    AnimationHelper.pulseTap(v);
                     Intent intent = new Intent(activity, EmployeesActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    activity.startActivity(intent);
+                    AnimationHelper.startActivityAnimated(activity, intent);
                 }
             }
         });
@@ -86,6 +89,7 @@ public class BottomNavHelper {
             @Override
             public void onClick(View v) {
                 if (activeTab != TAB_PLAN) {
+                    AnimationHelper.pulseTap(v);
                     openActivityIfPresent(activity, "tn.forsa.app.ui.ActionPlanActivity");
                 }
             }
@@ -105,7 +109,7 @@ public class BottomNavHelper {
             Class<?> targetClass = Class.forName(className);
             Intent intent = new Intent(activity, targetClass);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            activity.startActivity(intent);
+            AnimationHelper.startActivityAnimated(activity, intent);
         } catch (ClassNotFoundException e) {
             Toast.makeText(activity, R.string.nav_coming_soon, Toast.LENGTH_SHORT).show();
         }

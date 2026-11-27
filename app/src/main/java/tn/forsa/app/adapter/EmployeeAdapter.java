@@ -1,6 +1,7 @@
 package tn.forsa.app.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import java.util.ArrayList;
 
 import tn.forsa.app.R;
+import tn.forsa.app.data.DataStore;
 import tn.forsa.app.model.Employee;
 
 /**
@@ -78,6 +82,7 @@ public class EmployeeAdapter extends BaseAdapter {
         final Employee employee = displayedEmployees.get(position);
 
         holder.tvAvatar.setText(employee.getInitiales());
+        applyDepartmentAvatarColor(holder.tvAvatar, employee.getDepartement());
         holder.tvFullName.setText(employee.getNomComplet());
         holder.tvRole.setText(employee.getPoste());
         holder.tvDepartment.setText(employee.getDepartement());
@@ -114,6 +119,24 @@ public class EmployeeAdapter extends BaseAdapter {
         });
 
         return convertView;
+    }
+
+    /**
+     * Gives each department a distinct Tunisian-palette circle color for the advisor avatar.
+     */
+    private void applyDepartmentAvatarColor(TextView avatar, String department) {
+        int colorRes = R.color.color_primary;
+        if (DataStore.DEPARTMENTS[1].equals(department)) {
+            colorRes = R.color.color_potential;
+        } else if (DataStore.DEPARTMENTS[2].equals(department)) {
+            colorRes = R.color.color_eligible;
+        } else if (DataStore.DEPARTMENTS[3].equals(department)) {
+            colorRes = R.color.color_accent_red;
+        }
+        GradientDrawable circle = new GradientDrawable();
+        circle.setShape(GradientDrawable.OVAL);
+        circle.setColor(ContextCompat.getColor(context, colorRes));
+        avatar.setBackground(circle);
     }
 
     /**

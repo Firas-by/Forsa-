@@ -2,6 +2,7 @@ package tn.forsa.app.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Role: Represents a post-Licence opportunity (Master in Tunisia, scholarship abroad,
@@ -164,7 +165,7 @@ public class Opportunity implements Serializable {
         this.documentItems = new ArrayList<>();
         for (int i = 0; i < this.requiredDocuments.size(); i++) {
             String docName = this.requiredDocuments.get(i);
-            String initialStatus = docName.toLowerCase().contains("présélection")
+            String initialStatus = docName.toLowerCase(Locale.ROOT).contains("présélection")
                     ? DocumentItem.STATUS_AFTER_PRESELECTION
                     : DocumentItem.STATUS_MISSING;
             this.documentItems.add(new DocumentItem(docName, initialStatus));

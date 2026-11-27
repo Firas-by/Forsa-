@@ -200,13 +200,13 @@ public class EligibilityEngine {
      * 0 = no match
      */
     private static int checkDegreeMatch(Student student, ArrayList<String> acceptedDegrees) {
-        String exactTitle = safeTrim(student.getExactDegreeTitle()).toLowerCase();
-        String spec = safeTrim(student.getSpecialization()).toLowerCase();
+        String exactTitle = safeTrim(student.getExactDegreeTitle()).toLowerCase(Locale.ROOT);
+        String spec = safeTrim(student.getSpecialization()).toLowerCase(Locale.ROOT);
 
         // First check exact degree title if provided
         if (!exactTitle.isEmpty()) {
             for (int i = 0; i < acceptedDegrees.size(); i++) {
-                String accepted = acceptedDegrees.get(i).toLowerCase();
+                String accepted = acceptedDegrees.get(i).toLowerCase(Locale.ROOT);
                 if (exactTitle.contains(accepted) || accepted.contains(exactTitle)) {
                     return 2;
                 }
@@ -219,7 +219,7 @@ public class EligibilityEngine {
                     || spec.contains("rsi") || spec.contains("sem")
                     || spec.contains("info") || spec.contains("dev");
             for (int i = 0; i < acceptedDegrees.size(); i++) {
-                String accepted = acceptedDegrees.get(i).toLowerCase();
+                String accepted = acceptedDegrees.get(i).toLowerCase(Locale.ROOT);
                 if (spec.equals(accepted)) {
                     return 2;
                 }
@@ -284,7 +284,8 @@ public class EligibilityEngine {
         if (student.getMsd() >= 11.0 || student.getL1Average() >= 11.0) {
             met++;
         }
-        if (student.getStudyLanguage() != null && student.getStudyLanguage().toLowerCase().contains("anglais")) {
+        if (student.getStudyLanguage() != null
+                && student.getStudyLanguage().toLowerCase(Locale.ROOT).contains("anglais")) {
             met++;
         }
         if (student.isHasDeployedProject() || student.isHasPfe()) {

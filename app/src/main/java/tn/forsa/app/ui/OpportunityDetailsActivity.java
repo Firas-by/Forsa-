@@ -22,6 +22,7 @@ import tn.forsa.app.model.DocumentItem;
 import tn.forsa.app.model.EligibilityResult;
 import tn.forsa.app.model.Employee;
 import tn.forsa.app.model.Opportunity;
+import tn.forsa.app.util.AnimationHelper;
 import tn.forsa.app.util.EligibilityUiHelper;
 
 /**
@@ -180,6 +181,7 @@ public class OpportunityDetailsActivity extends AppCompatActivity {
         btnTalkToAdvisor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AnimationHelper.pulseTap(v);
                 String targetDept = opportunity.getMatchingAdvisorDepartment();
                 Employee advisor = DataStore.findAdvisorByDepartment(targetDept);
                 if (advisor == null) {
@@ -189,7 +191,7 @@ public class OpportunityDetailsActivity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(OpportunityDetailsActivity.this, EmployeeDetailsActivity.class);
                 intent.putExtra(EmployeesActivity.EXTRA_EMPLOYEE_ID, advisor.getId());
-                startActivity(intent);
+                AnimationHelper.startActivityAnimated(OpportunityDetailsActivity.this, intent);
             }
         });
     }
