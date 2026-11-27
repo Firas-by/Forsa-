@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    android:orientation="vertical">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_primary"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/add_employee_title"
+            android:textColor="@color/color_white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_rounded"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/ForsaSectionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="@string/label_full_name" />
+
+            <EditText
+                android:id="@+id/etFullName"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/bg_card_rounded"
+                android:hint="@string/hint_full_name"
+                android:inputType="textPersonName"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/color_text_primary"
+                android:textSize="14sp" />
+
+            <TextView
+                style="@style/ForsaSectionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_email" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/bg_card_rounded"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/color_text_primary"
+                android:textSize="14sp" />
+
+            <TextView
+                style="@style/ForsaSectionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_phone" />
+
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/bg_card_rounded"
+                android:hint="@string/hint_phone"
+                android:inputType="phone"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/color_text_primary"
+                android:textSize="14sp" />
+
+            <TextView
+                style="@style/ForsaSectionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_role" />
+
+            <EditText
+                android:id="@+id/etRole"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/bg_card_rounded"
+                android:hint="@string/hint_role"
+                android:inputType="text"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/color_text_primary"
+                android:textSize="14sp" />
+
+            <TextView
+                style="@style/ForsaSectionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_department" />
+
+            <Spinner
+                android:id="@+id/spDepartment"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/bg_card_rounded"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp" />
+
+            <TextView
+                style="@style/ForsaSectionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_hire_date" />
+
+            <EditText
+                android:id="@+id/etHireDate"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/bg_card_rounded"
+                android:clickable="true"
+                android:drawableEnd="@android:drawable/ic_menu_my_calendar"
+                android:focusable="false"
+                android:hint="@string/hint_hire_date"
+                android:inputType="none"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/color_text_primary"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCancelAdd"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/btn_cancel"
+                    android:textColor="@color/color_primary" />
+
+                <Button
+                    android:id="@+id/btnSaveAdd"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/color_primary"
+                    android:text="@string/btn_save"
+                    android:textColor="@color/color_white" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card_rounded"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <!-- Circular avatar with initials -->
+    <TextView
+        android:id="@+id/tvAvatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_avatar_circle"
+        android:gravity="center"
+        android:textColor="@color/color_white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <!-- Advisor details -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvDepartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_badge_rounded"
+            android:paddingStart="8dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="2dp"
+            android:textColor="@color/color_primary"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Edit and Delete action icons -->
+    <ImageButton
+        android:id="@+id/btnRowEdit"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/cd_edit_employee"
+        android:src="@android:drawable/ic_menu_edit"
+        android:tint="@color/color_primary" />
+
+    <ImageButton
+        android:id="@+id/btnRowDelete"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/cd_delete_employee"
+        android:src="@android:drawable/ic_menu_delete"
+        android:tint="@color/color_accent_red" />
+
+</LinearLayout>

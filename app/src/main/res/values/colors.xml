@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tunisian-inspired palette -->
+    <color name="color_primary">#1E5AA8</color>
+    <color name="color_primary_dark">#143F78</color>
+    <color name="color_primary_light">#E8F0FA</color>
+    <color name="color_accent_red">#D32F2F</color>
+    <color name="color_accent_red_light">#FDECEA</color>
+
+    <color name="color_background">#FFF8F0</color>
+    <color name="color_surface">#FFFFFF</color>
+    <color name="color_border">#E3DCD2</color>
+
+    <!-- Eligibility status colors -->
+    <color name="color_eligible">#2E9E6B</color>
+    <color name="color_eligible_bg">#E8F6EF</color>
+    <color name="color_potential">#F29D38</color>
+    <color name="color_potential_bg">#FEF4E6</color>
+    <color name="color_insufficient">#9AA5B1</color>
+    <color name="color_insufficient_bg">#F1F3F5</color>
+
+    <!-- Text colors -->
+    <color name="color_text_primary">#1C2430</color>
+    <color name="color_text_secondary">#5C6773</color>
+    <color name="color_white">#FFFFFF</color>
+</resources>

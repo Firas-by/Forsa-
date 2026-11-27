@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Forsa" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryVariant">@color/color_primary_dark</item>
+        <item name="colorOnPrimary">@color/color_white</item>
+        <item name="colorSecondary">@color/color_eligible</item>
+        <item name="colorOnSecondary">@color/color_white</item>
+        <item name="colorError">@color/color_accent_red</item>
+        <item name="android:windowBackground">@color/color_background</item>
+        <item name="android:statusBarColor">@color/color_primary_dark</item>
+    </style>
+
+    <style name="ForsaSectionLabel">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+</resources>
