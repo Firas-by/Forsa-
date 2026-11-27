@@ -7,9 +7,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Forsa">
 
-        <!-- Phase 1 launcher: EmployeesActivity (Phase 2 switches launcher to MainActivity) -->
+        <!-- Main dashboard launcher (Phase 2) -->
         <activity
-            android:name=".ui.EmployeesActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
@@ -17,6 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.EmployeesActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name=".ui.AddEmployeeActivity"

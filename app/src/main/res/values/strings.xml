@@ -10,6 +10,36 @@
     <string name="nav_plan">Plan</string>
     <string name="nav_coming_soon">Disponible dans la prochaine phase !</string>
 
+    <!-- Main Dashboard (Phase 2) -->
+    <string name="home_welcome">Marhbe bik fi Forsa !</string>
+    <string name="home_welcome_subtitle">Ton assistant d\'orientation basé sur les règles officielles après la Licence (BAC+3).</string>
+    <string name="home_passport_cta">Mon Passeport Étudiant</string>
+    <string name="home_stats_advisors">Conseillers</string>
+    <string name="home_stats_departments">Départements</string>
+    <string name="home_stats_open_opps">Ouvertes</string>
+    <string name="home_section_pathways">Choisis ta voie (4 parcours)</string>
+    <string name="home_section_shortcuts">Accès rapides</string>
+    <string name="shortcut_passport">Passeport</string>
+    <string name="shortcut_advisors">Conseillers</string>
+    <string name="shortcut_plan">Plan 90j</string>
+
+    <!-- 4 Pathways -->
+    <string name="pathway_master_title">Master en Tunisie</string>
+    <string name="pathway_master_sub">Mastères pros &amp; recherche (ISET, universités)</string>
+    <string name="pathway_abroad_title">Études à l\'étranger</string>
+    <string name="pathway_abroad_sub">Bourse 50/26, Erasmus Mundus</string>
+    <string name="pathway_job_title">Emploi</string>
+    <string name="pathway_job_sub">CIVP, postes junior IT &amp; stages</string>
+    <string name="pathway_freelance_title">Carrière indépendante</string>
+    <string name="pathway_freelance_sub">Freelance, remote &amp; portfolio</string>
+
+    <!-- Honesty rules card -->
+    <string name="honesty_title">Nos engagements de transparence</string>
+    <string name="honesty_rule_1">• Aucune recommandation sans source officielle vérifiable.</string>
+    <string name="honesty_rule_2">• Aucune équivalence non vérifiée présentée comme un fait.</string>
+    <string name="honesty_rule_3">• Aucune opportunité expirée affichée comme ouverte.</string>
+    <string name="honesty_rule_4">• Compatibilité avec les critères ≠ probabilité d\'admission.</string>
+
     <!-- Employees / Advisors list -->
     <string name="employees_title">Conseillers d\'orientation</string>
     <string name="employees_subtitle">Bureau d\'Orientation &amp; Carrière Universitaire</string>

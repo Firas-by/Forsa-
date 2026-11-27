@@ -135,4 +135,12 @@ public class DataStore {
         }
         return null;
     }
+
+    /**
+     * Returns the number of currently open (non-expired) opportunities.
+     * Returns 0 in Phase 2 until opportunities are seeded in Phase 4.
+     */
+    public static int getOpenOpportunitiesCount() {
+        return 0;
+    }
 }
